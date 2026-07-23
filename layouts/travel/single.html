@@ -1,0 +1,89 @@
+{{ define "main" }}
+
+<section class="page-hero">
+  <div class="container">
+    <span class="section-label" style="color: var(--color-accent);">Travel Guide</span>
+    <h1>{{ .Title }}</h1>
+    {{ with .Description }}<p>{{ . }}</p>{{ end }}
+  </div>
+</section>
+
+<section class="section">
+  <div class="section__inner">
+
+    <div class="section__header">
+      <span class="section-label">From the UK</span>
+      <h2>Departure Airports</h2>
+      <p>Suggested routes from major UK airports. Journey times are approximate and depend on layovers and connections available in 2028.</p>
+    </div>
+
+    <div class="airport-grid">
+      {{ range .Params.airports }}
+      <div class="airport-card">
+        <div class="airport-card__code">{{ .code }}</div>
+        <div class="airport-card__name">{{ .name }}</div>
+        <div class="airport-card__route">
+          {{ range .route }}
+          <div class="route-step">
+            <span class="route-step__dot" aria-hidden="true"></span>
+            <span>{{ . }}</span>
+          </div>
+          {{ end }}
+        </div>
+        <div class="airport-card__time">
+          Estimated journey: <strong>{{ .totalTime }}</strong>
+          {{ with .tip }}<span class="airport-card__tip">{{ . }}</span>{{ end }}
+        </div>
+      </div>
+      {{ end }}
+    </div>
+
+    <div class="section__header">
+      <span class="section-label">The Venue</span>
+      <h2>Castello di Rosciano</h2>
+      <p>Località Signoria, 77/a, 06089 Torgiano PG, Italy</p>
+    </div>
+
+    <div class="map-container">
+      <iframe
+        src="https://maps.google.com/maps?q=Castello+di+Rosciano+Torgiano+Italy&z=14&output=embed"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Map showing Castello di Rosciano, Torgiano, Italy"
+        allowfullscreen>
+      </iframe>
+    </div>
+
+    <div class="section__header" style="margin-top: 3rem;">
+      <span class="section-label">From Italian Airports</span>
+      <h2>Driving Directions</h2>
+    </div>
+
+    <div class="driving-directions">
+      <div class="direction-card">
+        <h3>From Rome Fiumicino (FCO)</h3>
+        <ol class="direction-steps">
+          <li>Exit the airport via the A91 heading north towards the GRA ring road</li>
+          <li>Join the Grande Raccordo Anulare (GRA) and head north</li>
+          <li>Take the A1 motorway north towards Florence</li>
+          <li>Exit at Orvieto and join the E45 north towards Perugia</li>
+          <li>Follow signs for Torgiano — the venue is signposted on the approach</li>
+        </ol>
+        <p class="direction-meta">~1h 45m &middot; ~160 km &middot; Toll roads on the A1</p>
+      </div>
+
+      <div class="direction-card">
+        <h3>From Perugia Airport (PEG)</h3>
+        <ol class="direction-steps">
+          <li>Exit the airport following signs for Perugia / E45</li>
+          <li>Take the E45 south towards Torgiano</li>
+          <li>Exit at Torgiano and follow signs to Castello di Rosciano</li>
+        </ol>
+        <p class="direction-meta">~20 min &middot; ~15 km &middot; The closest airport to the venue</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+{{ end }}

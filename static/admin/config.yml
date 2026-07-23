@@ -1,0 +1,165 @@
+# ── Authentication ────────────────────────────────────────────────────────────
+# base_url points to this site — the /auth Pages Function handles login.
+# Authentication is via Cloudflare Access (magic link email).
+# No GitHub account needed for the couple.
+backend:
+  name: github
+  repo: J03white/cp-ep-wedding
+  branch: main
+  base_url: https://cp-ep-wedding.pages.dev
+
+# ── Media ─────────────────────────────────────────────────────────────────────
+# Files uploaded via the CMS are committed to assets/images/.
+# The stored path (e.g. images/venue/photo.jpg) is what Hugo's resources.Get uses.
+media_folder: assets/images
+public_folder: images
+
+locale: en
+
+# ── Collections ───────────────────────────────────────────────────────────────
+collections:
+
+  # ── Homepage ────────────────────────────────────────────────────────────────
+  - name: homepage
+    label: Homepage
+    files:
+      - name: homepage
+        label: Homepage
+        file: content/_index.md
+        fields:
+          - label: Hero Photo
+            name: heroImage
+            widget: image
+            media_folder: /assets/images/venue
+            public_folder: images/venue
+            hint: The large photo shown at the top of the page.
+
+          - label: Welcome Message
+            name: body
+            widget: markdown
+            hint: The welcome paragraph shown below the hero.
+
+          - label: Event Cards
+            name: details
+            widget: list
+            hint: The cards shown on the homepage — one per event (ceremony, dinner, etc.).
+            fields:
+              - { label: Card Title, name: title, widget: string }
+              - label: Card Photo
+                name: image
+                widget: image
+                media_folder: /assets/images/details
+                public_folder: images/details
+              - label: Info Rows
+                name: items
+                widget: list
+                summary: "{{fields.label}}: {{fields.value}}"
+                fields:
+                  - { label: Label, name: label, widget: string }
+                  - { label: Value, name: value, widget: string }
+              - label: Note
+                name: note
+                widget: string
+                required: false
+                hint: Small note shown at the bottom of the card.
+
+  # ── Travel Guide ─────────────────────────────────────────────────────────────
+  - name: travel
+    label: Travel Guide
+    files:
+      - name: travel
+        label: Travel Guide
+        file: content/travel.md
+        fields:
+          - { label: Page Title, name: title, widget: string }
+          - { label: Intro Text, name: description, widget: text }
+          - label: Airports
+            name: airports
+            widget: list
+            summary: "{{fields.name}} ({{fields.code}})"
+            fields:
+              - { label: "Airport Code (e.g. LBA)", name: code, widget: string }
+              - { label: Airport Name, name: name, widget: string }
+              - label: Route Steps
+                name: route
+                widget: list
+                hint: One bullet point per line.
+              - { label: "Estimated Journey Time (e.g. ~5h)", name: totalTime, widget: string }
+              - { label: Tip, name: tip, widget: string, required: false }
+
+  # ── Accommodation ────────────────────────────────────────────────────────────
+  - name: accommodation
+    label: Accommodation
+    files:
+      - name: accommodation
+        label: Accommodation
+        file: content/accommodation.md
+        fields:
+          - { label: Page Title, name: title, widget: string }
+          - { label: Intro Text, name: description, widget: text }
+          - label: Room Types
+            name: rooms
+            widget: list
+            summary: "{{fields.type}}"
+            fields:
+              - { label: "Room Type (e.g. Single Room)", name: type, widget: string }
+              - { label: "Icon Emoji (e.g. 🛏️)", name: icon, widget: string }
+              - { label: Description, name: description, widget: text }
+              - { label: "Occupancy (e.g. Up to 2 guests)", name: occupancy, widget: string }
+              - label: Features
+                name: features
+                widget: list
+                hint: One feature per line.
+              - { label: "Price Per Night (e.g. €80 (+VAT))", name: price_per_night, widget: string }
+              - { label: "Price Note (e.g. Per room, per night)", name: price_note, widget: string }
+          - label: Additional Guest Pricing
+            name: extras
+            widget: list
+            required: false
+            summary: "{{fields.label}}"
+            fields:
+              - { label: Guest Type, name: label, widget: string }
+              - { label: Price, name: price, widget: string }
+              - { label: Note, name: note, widget: string }
+          - { label: VAT Note, name: vat_note, widget: string, required: false }
+          - { label: Payment Note, name: payment_note, widget: string, required: false }
+
+  # ── Couple Photos ────────────────────────────────────────────────────────────
+  - name: gallery
+    label: Couple Photos
+    files:
+      - name: gallery
+        label: Couple Photos
+        file: data/gallery.yaml
+        fields:
+          - label: Photos
+            name: photos
+            widget: list
+            label_singular: Photo
+            summary: "{{fields.src}}"
+            hint: Add, remove or reorder photos here. They appear in the carousel on the homepage.
+            fields:
+              - label: Photo
+                name: src
+                widget: image
+                media_folder: /assets/images/couple
+                public_folder: images/couple
+                hint: Upload a photo or choose one already uploaded.
+
+  # ── FAQ ──────────────────────────────────────────────────────────────────────
+  - name: faq
+    label: FAQ
+    files:
+      - name: faq
+        label: FAQ
+        file: content/faq.md
+        fields:
+          - { label: Page Title, name: title, widget: string }
+          - { label: Intro Text, name: description, widget: text }
+          - label: Questions & Answers
+            name: faqs
+            widget: list
+            summary: "{{fields.q}}"
+            fields:
+              - { label: Question, name: q, widget: string }
+              - { label: Answer, name: a, widget: text }

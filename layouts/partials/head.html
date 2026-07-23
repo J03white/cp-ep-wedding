@@ -1,0 +1,12 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ if .IsHome }}{{ .Site.Title }} — {{ .Site.Params.weddingDateFull }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
+<meta name="description" content="{{ if .IsHome }}Join us to celebrate the wedding of {{ .Site.Params.coupleName }} on {{ .Site.Params.weddingDateFull }} at {{ .Site.Params.venue }}, {{ .Site.Params.location }}.{{ else }}{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.coupleName }} — {{ .Site.Params.weddingDateFull }}{{ end }}{{ end }}">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+{{ $variables := resources.Get "css/variables.css" }}
+{{ $main      := resources.Get "css/main.css" }}
+{{ $css := slice $variables $main | resources.Concat "css/bundle.css" | resources.Minify | resources.Fingerprint }}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}" crossorigin="anonymous">
