@@ -16,34 +16,41 @@ export async function onRequestGet(context) {
   const { request, env } = context;
   const url = new URL(request.url);
   const siteId = url.searchParams.get('site_id') || url.hostname;
-  const headers = { 'Cache-Control': 'no-store', 'Content-Type': 'text/html; charset=utf-8' };
+  const direct = url.searchParams.get('direct') === '1';
+  const htmlHeaders = { 'Cache-Control': 'no-store', 'Content-Type': 'text/html; charset=utf-8' };
+  const jsonHeaders = { 'Cache-Control': 'no-store', 'Content-Type': 'application/json' };
 
   if (!env.GITHUB_PAT || !env.CF_TEAM_DOMAIN || !env.CF_ACCESS_AUD) {
+    if (direct) return new Response(JSON.stringify({ error: 'not_configured' }), { status: 500, headers: jsonHeaders });
     return new Response(
       errorPage('CMS is not configured yet. Contact the site administrator.', siteId),
-      { status: 500, headers },
+      { status: 500, headers: htmlHeaders },
     );
   }
 
   const jwt = parseCookie(request.headers.get('Cookie') || '')['CF_Authorization'];
 
   if (!jwt) {
+    if (direct) return new Response(JSON.stringify({ error: 'not_authenticated' }), { status: 401, headers: jsonHeaders });
     return new Response(
       errorPage('Not authenticated — open the admin from the main site.', siteId),
-      { status: 401, headers },
+      { status: 401, headers: htmlHeaders },
     );
   }
 
   const valid = await validateCFAccessJWT(jwt, env.CF_TEAM_DOMAIN, env.CF_ACCESS_AUD);
 
   if (!valid) {
+    if (direct) return new Response(JSON.stringify({ error: 'invalid_token' }), { status: 401, headers: jsonHeaders });
     return new Response(
       errorPage('Access token is invalid or expired. Please try again.', siteId),
-      { status: 401, headers },
+      { status: 401, headers: htmlHeaders },
     );
   }
 
-  return new Response(successPage(env.GITHUB_PAT, siteId), { headers });
+  if (direct) return new Response(JSON.stringify({ token: env.GITHUB_PAT }), { headers: jsonHeaders });
+
+  return new Response(successPage(env.GITHUB_PAT, siteId), { headers: htmlHeaders });
 }
 
 // ── JWT validation ────────────────────────────────────────────────────────────

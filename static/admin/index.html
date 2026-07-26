@@ -4,15 +4,40 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Site Admin</title>
-</head>
-<body>
-  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
   <script>
+    // Intercept window.open so the auth popup never actually opens.
+    // Instead, we fetch the token directly from /auth?direct=1 (same-origin,
+    // so the CF_Authorization cookie is included) and dispatch the postMessage
+    // that Decap CMS expects. Decap only validates event.origin, not event.source,
+    // so this works without a real popup window.
     (function () {
+      var _open = window.open;
+      window.open = function (url, name, features) {
+        if (typeof url === 'string' && url.indexOf('/auth') !== -1) {
+          fetch('/auth?direct=1')
+            .then(function (r) { return r.ok ? r.json() : Promise.reject(r.status); })
+            .then(function (data) {
+              window.dispatchEvent(new MessageEvent('message', {
+                data: 'authorization:github:success:' + JSON.stringify({
+                  token: data.token,
+                  provider: 'github'
+                }),
+                origin: location.origin
+              }));
+            })
+            .catch(function (e) { console.error('CMS auth failed:', e); });
+          return { closed: false, close: function () {} };
+        }
+        return _open.apply(this, arguments);
+      };
+
+      // Auto-click the login button the moment it appears in the DOM.
+      // Because window.open is intercepted above, no real popup opens and
+      // no browser popup-blocker fires.
       var observer = new MutationObserver(function () {
         var buttons = document.querySelectorAll('button');
         for (var i = 0; i < buttons.length; i++) {
-          if (buttons[i].textContent.trim().includes('Login with GitHub')) {
+          if (buttons[i].textContent.includes('Login with GitHub')) {
             buttons[i].click();
             observer.disconnect();
             return;
@@ -23,5 +48,8 @@
       setTimeout(function () { observer.disconnect(); }, 15000);
     })();
   </script>
+</head>
+<body>
+  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
 </body>
 </html>
