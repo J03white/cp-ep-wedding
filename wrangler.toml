@@ -5,3 +5,6 @@ main = "src/worker.js"
 [assets]
 directory = "./public"
 binding = "ASSETS"
+
+[vars]
+CF_TEAM_DOMAIN = "joe1997white.cloudflareaccess.com"
