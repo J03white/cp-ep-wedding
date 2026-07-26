@@ -5,35 +5,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Site Admin</title>
   <script>
-    // Intercept window.open so the auth popup never actually opens.
-    // Instead, we fetch the token directly from /auth?direct=1 (same-origin,
-    // so the CF_Authorization cookie is included) and dispatch the postMessage
-    // that Decap CMS expects. Decap only validates event.origin, not event.source,
-    // so this works without a real popup window.
     (function () {
       var _open = window.open;
       window.open = function (url, name, features) {
         if (typeof url === 'string' && url.indexOf('/auth') !== -1) {
+          var origin = location.origin;
+          var provider = 'github';
+
           fetch('/auth?direct=1')
             .then(function (r) { return r.ok ? r.json() : Promise.reject(r.status); })
             .then(function (data) {
+              // Step 1: dispatch the handshake — this causes Decap to swap its
+              // handshake listener for the real authorization listener.
               window.dispatchEvent(new MessageEvent('message', {
-                data: 'authorization:github:success:' + JSON.stringify({
+                data: 'authorizing:' + provider,
+                origin: origin
+              }));
+              // Step 2: the authorization listener is now active; send the token.
+              window.dispatchEvent(new MessageEvent('message', {
+                data: 'authorization:' + provider + ':success:' + JSON.stringify({
                   token: data.token,
-                  provider: 'github'
+                  provider: provider
                 }),
-                origin: location.origin
+                origin: origin
               }));
             })
             .catch(function (e) { console.error('CMS auth failed:', e); });
-          return { closed: false, close: function () {} };
+
+          // Return a fake window with postMessage so Decap's handshake echo
+          // doesn't throw when it calls authWindow.postMessage().
+          return { closed: false, close: function () {}, postMessage: function () {} };
         }
         return _open.apply(this, arguments);
       };
 
-      // Auto-click the login button the moment it appears in the DOM.
-      // Because window.open is intercepted above, no real popup opens and
-      // no browser popup-blocker fires.
+      // Auto-click the login button the moment it appears.
+      // window.open is intercepted above so no real popup opens.
       var observer = new MutationObserver(function () {
         var buttons = document.querySelectorAll('button');
         for (var i = 0; i < buttons.length; i++) {
