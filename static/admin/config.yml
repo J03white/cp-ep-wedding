@@ -6,7 +6,7 @@ backend:
   name: github
   repo: J03white/cp-ep-wedding
   branch: main
-  base_url: https://cp-ep-wedding.pages.dev
+  base_url: https://cp-ep-wedding.joe1997white.workers.dev
 
 # ── Media ─────────────────────────────────────────────────────────────────────
 # Files uploaded via the CMS are committed to assets/images/.

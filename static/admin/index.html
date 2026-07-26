@@ -7,5 +7,21 @@
 </head>
 <body>
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  <script>
+    (function () {
+      var observer = new MutationObserver(function () {
+        var buttons = document.querySelectorAll('button');
+        for (var i = 0; i < buttons.length; i++) {
+          if (buttons[i].textContent.trim().includes('Login with GitHub')) {
+            buttons[i].click();
+            observer.disconnect();
+            return;
+          }
+        }
+      });
+      observer.observe(document.body, { childList: true, subtree: true });
+      setTimeout(function () { observer.disconnect(); }, 15000);
+    })();
+  </script>
 </body>
 </html>
