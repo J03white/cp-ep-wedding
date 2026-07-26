@@ -29,7 +29,7 @@
             })
             .catch(function (e) { console.error('[CMS] auth failed:', e); });
 
-          return { closed: false, close: function () {}, postMessage: function () {} };
+          return { closed: false, close: function () {}, postMessage: function () {}, focus: function () {} };
         }
         return _open.apply(this, arguments);
       };
