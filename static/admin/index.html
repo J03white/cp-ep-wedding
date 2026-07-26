@@ -41,19 +41,26 @@
         return _open.apply(this, arguments);
       };
 
-      var observer = new MutationObserver(function () {
+      function tryClick() {
         var buttons = document.querySelectorAll('button');
         for (var i = 0; i < buttons.length; i++) {
           if (buttons[i].textContent.includes('Login with GitHub')) {
             console.log('[CMS] login button found, clicking...');
             buttons[i].click();
-            observer.disconnect();
-            return;
+            return true;
           }
         }
-      });
-      observer.observe(document.body, { childList: true, subtree: true });
-      setTimeout(function () { observer.disconnect(); }, 15000);
+        return false;
+      }
+
+      if (!tryClick()) {
+        var observer = new MutationObserver(function () {
+          if (tryClick()) observer.disconnect();
+        });
+        // document.documentElement is always available, even before <body> exists
+        observer.observe(document.documentElement, { childList: true, subtree: true });
+        setTimeout(function () { observer.disconnect(); }, 15000);
+      }
     })();
   </script>
 </head>
