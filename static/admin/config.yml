@@ -2,6 +2,8 @@
 # base_url points to this site — the /auth Pages Function handles login.
 # Authentication is via Cloudflare Access (magic link email).
 # No GitHub account needed for the couple.
+site_url: https://cp-ep-wedding.joe1997white.workers.dev
+
 backend:
   name: github
   repo: J03white/cp-ep-wedding

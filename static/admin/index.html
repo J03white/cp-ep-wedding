@@ -6,6 +6,8 @@
   <title>Site Admin</title>
   <script>
     (function () {
+      var hasLoggedIn = false;
+
       var _open = window.open;
       window.open = function (url, name, features) {
         if (typeof url === 'string' && url.indexOf('/auth') !== -1) {
@@ -15,6 +17,7 @@
           fetch('/auth?direct=1')
             .then(function (r) { return r.ok ? r.json() : Promise.reject(r.status); })
             .then(function (data) {
+              hasLoggedIn = true;
               window.dispatchEvent(new MessageEvent('message', {
                 data: 'authorizing:' + provider,
                 origin: origin
@@ -38,6 +41,11 @@
         var buttons = document.querySelectorAll('button');
         for (var i = 0; i < buttons.length; i++) {
           if (buttons[i].textContent.includes('Login with GitHub')) {
+            if (hasLoggedIn) {
+              // Login button reappeared after a successful session — logout occurred
+              window.location.href = '/';
+              return true;
+            }
             buttons[i].click();
             return true;
           }
