@@ -9,22 +9,16 @@
       var _open = window.open;
       window.open = function (url, name, features) {
         if (typeof url === 'string' && url.indexOf('/auth') !== -1) {
-          console.log('[CMS] window.open intercepted, url:', url);
           var origin = location.origin;
           var provider = 'github';
 
           fetch('/auth?direct=1')
-            .then(function (r) {
-              console.log('[CMS] /auth?direct=1 status:', r.status);
-              return r.ok ? r.json() : Promise.reject(r.status);
-            })
+            .then(function (r) { return r.ok ? r.json() : Promise.reject(r.status); })
             .then(function (data) {
-              console.log('[CMS] token received, dispatching handshake...');
               window.dispatchEvent(new MessageEvent('message', {
                 data: 'authorizing:' + provider,
                 origin: origin
               }));
-              console.log('[CMS] dispatching success...');
               window.dispatchEvent(new MessageEvent('message', {
                 data: 'authorization:' + provider + ':success:' + JSON.stringify({
                   token: data.token,
@@ -32,7 +26,6 @@
                 }),
                 origin: origin
               }));
-              console.log('[CMS] messages dispatched');
             })
             .catch(function (e) { console.error('[CMS] auth failed:', e); });
 
@@ -45,7 +38,6 @@
         var buttons = document.querySelectorAll('button');
         for (var i = 0; i < buttons.length; i++) {
           if (buttons[i].textContent.includes('Login with GitHub')) {
-            console.log('[CMS] login button found, clicking...');
             buttons[i].click();
             return true;
           }
@@ -57,7 +49,6 @@
         var observer = new MutationObserver(function () {
           if (tryClick()) observer.disconnect();
         });
-        // document.documentElement is always available, even before <body> exists
         observer.observe(document.documentElement, { childList: true, subtree: true });
         setTimeout(function () { observer.disconnect(); }, 15000);
       }
