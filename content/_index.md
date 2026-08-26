@@ -1,7 +1,7 @@
 ---
 title: Ellie & Christian
 description: Join us to celebrate our wedding on TBC at TBC, TBC
-heroImage: assets/images/01211.mp4
+heroImage: images/venue/01211.mp4
 details:
   - title: The Ceremony
     image: images/details/healey-barn-from-the-smiths-30.5.19-rachel-dan-659.jpg.webp
