@@ -4,7 +4,7 @@ description: Join us to celebrate our wedding on TBC at TBC, TBC
 heroImage: assets/images/01211.mp4
 details:
   - title: The Ceremony
-    image: https://crippsandco.com/wp-content/uploads/2024/10/Healey-Barn-from-the-smiths-30.5.19-Rachel-Dan-659.jpg.webp
+    image: images/details/healey-barn-from-the-smiths-30.5.19-rachel-dan-659.jpg.webp
     items:
       - label: Date
         value: 4th September 2027
