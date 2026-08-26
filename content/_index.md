@@ -1,7 +1,7 @@
 ---
 title: Ellie & Christian
 description: Join us to celebrate our wedding on TBC at TBC, TBC
-heroImage: https://crippsandco.com/wp-content/uploads/2026/01/01211.mp4
+heroImage: assets/images/01211.mp4
 details:
   - title: The Ceremony
     image: images/details/ceremony.png
