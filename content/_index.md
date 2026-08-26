@@ -3,6 +3,9 @@ title: Ellie & Christian
 description: Join us to celebrate our wedding on TBC at TBC, TBC
 heroImage: images/venue/01211.mp4
 details:
+  - title: The Night Before
+    items: []
+    image: images/details/reception.png
   - title: The Ceremony
     image: images/details/healey-barn-from-the-smiths-30.5.19-rachel-dan-659.jpg.webp
     items:
@@ -27,9 +30,13 @@ details:
       - label: Evening
         value: Dancing & celebrations
     note: We can't wait to celebrate with you all evening!
+  - title: The Morning After
+    image: images/details/ceremony.png
 ---
-Hi CP & Ellie let me know if you have any issues 
+Welcome to our wedding website.
 
-We are so incredibly excited to invite you to share in our special day. Whether you've been part of our story from the very beginning or are a newer chapter, having you there means the world to us.
+If you're here it's because you are really important to us and we cannot wait to see you on our big day.
 
-Head to the travel guide for getting here, check out our accommodation suggestions, and please RSVP by **TBC**.
+Please have a look around and make yourself at home. We've included lots of useful information about getting to the venue, accommodation suggestions, and sightseeing options for anyone staying a little longer.
+
+Don't forget to RSVP by **TBC**.
