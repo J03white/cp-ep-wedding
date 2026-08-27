@@ -12,7 +12,7 @@ details:
       - label: Time
         value: TBC - TBC
     image: images/details/healey-hall.webp
-    note: We will staying in the historic Healey Hall a short distance from the
+    note: We will be staying in the historic Healey Hall a short distance from the
       venue. For those in the area the night before, we would love to welcome
       you to a short drinks reception in the court yard. This is entirely
       optional but we'd love to see you.
