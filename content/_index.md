@@ -24,13 +24,13 @@ details:
       - label: Venue
         value: Healey Barn, Northumberland
       - label: Guest Arrival
-        value: TBC
+        value: 1pm - 1:30
       - label: Dress Code
         value: TBC
       - label: Evening Do
         value: TBC
       - label: Closing Time
-        value: TBC
+        value: 12am
     note: A full Order of Service will be shared closer to the time
   - title: The Morning After
     image: images/details/2h8gb8c-aerial-view-prudhoe-castle-989035528.webp
