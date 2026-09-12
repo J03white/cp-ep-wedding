@@ -235,17 +235,19 @@ p { line-height: 1.7; }
 
 /* ── Page hero (inner pages) ─────────────────────────────── */
 .page-hero {
-  padding: calc(var(--nav-height) + var(--space-3xl)) var(--space-lg) var(--space-2xl);
+  padding: calc(var(--nav-height) + var(--space-3xl)) 0 var(--space-2xl);
   background: var(--color-primary-dark);
   text-align: center;
   color: var(--color-white);
 }
 .page-hero h1 {
   font-family: var(--font-serif);
-  font-size: var(--text-5xl);
+  font-size: clamp(2rem, 7vw, var(--text-5xl));
   font-weight: 300;
   color: var(--color-white);
+  line-height: 1.15;
   margin-top: var(--space-sm);
+  overflow-wrap: break-word;
 }
 .page-hero p { color: rgba(255,255,255,0.72); font-size: var(--text-lg); margin-top: var(--space-sm); }
 
