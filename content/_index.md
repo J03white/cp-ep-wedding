@@ -1,7 +1,7 @@
 ---
 title: Ellie & Christian
 description: Join us to celebrate our wedding on TBC at TBC, TBC
-heroImage: images/venue/01211.mp4
+heroImage: images/venue/gettyimages-1227903763.webp
 details:
   - title: The Night Before
     items:
