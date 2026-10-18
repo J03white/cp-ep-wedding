@@ -1,6 +1,6 @@
 ---
 title: Getting Here
-description: How to travel to TBC, TBC
+description: Travelling to Healey Barn
 type: travel
 airports: []
 ---
