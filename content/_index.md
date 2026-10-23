@@ -1,7 +1,10 @@
 ---
 title: Ellie & Christian
-description: Join us to celebrate our wedding on TBC at TBC, TBC
+description: Join us to celebrate our wedding on 4th September 2027 at Healey Barn, Northumberland
 heroImage: images/venue/gettyimages-1227903763.webp
+travelTeaserLabel: "Travelling to Northumberland"
+travelTeaserHeading: "Getting Here"
+travelTeaserText: "We've put together a travel guide with directions to Healey Barn, plus a few accommodation recommendations nearby."
 details:
   - title: The Night Before
     items:

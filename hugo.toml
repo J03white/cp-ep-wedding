@@ -3,11 +3,9 @@ languageCode = 'en-gb'
 title = 'Ellie & Christian'
 
 [params]
-  coupleName      = "Ellie & Christian"
-  weddingDate     = "TBC"
-  weddingDateFull = "TBC"
-  venue           = "TBC"
-  location        = "TBC"
+  # coupleName, weddingDate, weddingDateFull, venue, location now live in
+  # data/settings.yaml (CMS: "Site Details") so the couple can edit them
+  # without a dev touching hugo.toml.
   formspreeEndpoint   = "https://formspree.io/f/PLACEHOLDER_FORMSPREE_ID"
   turnstileSiteKey    = "PLACEHOLDER_TURNSTILE_KEY"
   maxAdditionalGuests = 8

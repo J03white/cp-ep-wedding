@@ -235,7 +235,7 @@ p { line-height: 1.7; }
 
 /* ── Page hero (inner pages) ─────────────────────────────── */
 .page-hero {
-  padding: calc(var(--nav-height) + var(--space-3xl)) 0 var(--space-2xl);
+  padding: calc(var(--nav-height) + var(--space-lg)) 0 var(--space-lg);
   background: var(--color-primary-dark);
   text-align: center;
   color: var(--color-white);
@@ -977,14 +977,14 @@ p { line-height: 1.7; }
   background: var(--color-primary-dark);
   color: rgba(255,255,255,0.65);
   text-align: center;
-  padding: var(--space-2xl) var(--space-lg);
+  padding: var(--space-xl) var(--space-lg);
 }
 .footer__names { font-family: var(--font-serif); font-size: var(--text-2xl); color: var(--color-white); margin-bottom: var(--space-xs); }
 .footer__date  { font-size: var(--text-sm); letter-spacing: 0.1em; text-transform: uppercase; }
 .footer__venue { margin-top: var(--space-xs); font-size: var(--text-sm); color: var(--color-accent); }
 .footer__bottom {
-  margin-top: var(--space-lg);
-  padding-top: var(--space-md);
+  margin-top: var(--space-md);
+  padding-top: var(--space-sm);
   border-top: 1px solid rgba(255,255,255,0.1);
   font-size: var(--text-xs);
 }

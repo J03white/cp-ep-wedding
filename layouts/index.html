@@ -22,11 +22,11 @@
     <div class="hero__overlay"></div>
   </div>
   <div class="hero__content">
-    <span class="section-label" style="color: rgba(201,169,110,0.9);">{{ .Site.Params.weddingDateFull }}</span>
-    <h1 class="hero__names">{{ .Site.Params.coupleName }}</h1>
+    <span class="section-label" style="color: rgba(201,169,110,0.9);">{{ hugo.Data.settings.weddingDateFull }}</span>
+    <h1 class="hero__names">{{ hugo.Data.settings.coupleName }}</h1>
     <div class="hero__divider" aria-hidden="true"></div>
-    <p class="hero__date">{{ .Site.Params.venue }}</p>
-    <p class="hero__location">{{ .Site.Params.location }}</p>
+    <p class="hero__date">{{ hugo.Data.settings.venue }}</p>
+    <p class="hero__location">{{ hugo.Data.settings.location }}</p>
   </div>
   <div class="hero__scroll" aria-hidden="true">Scroll</div>
 </section>
@@ -39,7 +39,7 @@
       <div class="welcome__text" style="margin-top: 1.5rem;">
         {{ .Content }}
       </div>
-      <div class="welcome__signature">{{ .Site.Params.coupleName }}</div>
+      <div class="welcome__signature">{{ hugo.Data.settings.coupleName }}</div>
     </div>
   </div>
 </section>
@@ -72,7 +72,7 @@
 
 {{/* ── Photo carousel ───────────────────────────────────────── */}}
 {{ $photos := slice }}
-{{ with .Site.Data.gallery }}{{ $photos = .photos }}{{ end }}
+{{ with hugo.Data.gallery }}{{ $photos = .photos }}{{ end }}
 <section class="section section--alt section--flush" id="gallery" aria-label="Photo gallery">
   {{ if $photos }}
     <div class="photo-carousel" id="photo-gallery">
@@ -87,7 +87,7 @@
                  tabindex="0"
                  role="button"
                  aria-label="View photo">
-              <img src="{{ $thumb.RelPermalink }}" alt="{{ $.Site.Params.coupleName }}" loading="lazy">
+              <img src="{{ $thumb.RelPermalink }}" alt="{{ hugo.Data.settings.coupleName }}" loading="lazy">
             </div>
           {{ end }}
         {{ end }}
@@ -141,9 +141,9 @@
 {{/* ── Getting Here teaser ──────────────────────────────────── */}}
 <section class="travel-teaser">
   <div class="container">
-    <span class="section-label" style="color: var(--color-accent);">Travelling to Italy</span>
-    <h2>Getting Here</h2>
-    <p>We've put together a full travel guide with suggested routes from Leeds, Manchester, and London airports to the venue in Torgiano.</p>
+    <span class="section-label" style="color: var(--color-accent);">{{ .Params.travelTeaserLabel | default "Getting Here" }}</span>
+    <h2>{{ .Params.travelTeaserHeading | default "Getting Here" }}</h2>
+    {{ with .Params.travelTeaserText }}<p>{{ . }}</p>{{ end }}
     <a href="{{ "/travel/" | relURL }}" class="btn btn--outline">View Travel Guide</a>
   </div>
 </section>
