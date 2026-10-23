@@ -11,10 +11,11 @@
 <section class="section">
   <div class="section__inner">
 
+    {{ if .Params.airports }}
     <div class="section__header">
       <span class="section-label">From the UK</span>
       <h2>Departure Airports</h2>
-      <p>Suggested routes from major UK airports. Journey times are approximate and depend on layovers and connections available in 2028.</p>
+      <p>Suggested routes from major UK airports. Journey times are approximate and depend on layovers and connections available nearer the time.</p>
     </div>
 
     <div class="airport-grid">
@@ -37,51 +38,46 @@
       </div>
       {{ end }}
     </div>
+    {{ end }}
 
+    {{ with .Params.venueName }}
     <div class="section__header">
       <span class="section-label">The Venue</span>
-      <h2>Castello di Rosciano</h2>
-      <p>Località Signoria, 77/a, 06089 Torgiano PG, Italy</p>
+      <h2>{{ . }}</h2>
+      {{ with $.Params.venueAddress }}<p>{{ . }}</p>{{ end }}
     </div>
 
+    {{ with $.Params.mapQuery }}
     <div class="map-container">
       <iframe
-        src="https://maps.google.com/maps?q=Castello+di+Rosciano+Torgiano+Italy&z=14&output=embed"
+        src="https://maps.google.com/maps?q={{ . }}&z=14&output=embed"
         loading="lazy"
         referrerpolicy="no-referrer-when-downgrade"
-        title="Map showing Castello di Rosciano, Torgiano, Italy"
+        title="{{ $.Params.mapTitle | default (printf "Map showing %s" $.Params.venueName) }}"
         allowfullscreen>
       </iframe>
     </div>
+    {{ end }}
+    {{ end }}
 
+    {{ with .Params.directions }}
     <div class="section__header" style="margin-top: 3rem;">
-      <span class="section-label">From Italian Airports</span>
+      {{ with $.Params.directionsLabel }}<span class="section-label">{{ . }}</span>{{ end }}
       <h2>Driving Directions</h2>
     </div>
 
     <div class="driving-directions">
+      {{ range . }}
       <div class="direction-card">
-        <h3>From Rome Fiumicino (FCO)</h3>
+        <h3>{{ .title }}</h3>
         <ol class="direction-steps">
-          <li>Exit the airport via the A91 heading north towards the GRA ring road</li>
-          <li>Join the Grande Raccordo Anulare (GRA) and head north</li>
-          <li>Take the A1 motorway north towards Florence</li>
-          <li>Exit at Orvieto and join the E45 north towards Perugia</li>
-          <li>Follow signs for Torgiano — the venue is signposted on the approach</li>
+          {{ range .steps }}<li>{{ . }}</li>{{ end }}
         </ol>
-        <p class="direction-meta">~1h 45m &middot; ~160 km &middot; Toll roads on the A1</p>
+        <p class="direction-meta">{{ .meta }}</p>
       </div>
-
-      <div class="direction-card">
-        <h3>From Perugia Airport (PEG)</h3>
-        <ol class="direction-steps">
-          <li>Exit the airport following signs for Perugia / E45</li>
-          <li>Take the E45 south towards Torgiano</li>
-          <li>Exit at Torgiano and follow signs to Castello di Rosciano</li>
-        </ol>
-        <p class="direction-meta">~20 min &middot; ~15 km &middot; The closest airport to the venue</p>
-      </div>
+      {{ end }}
     </div>
+    {{ end }}
 
   </div>
 </section>

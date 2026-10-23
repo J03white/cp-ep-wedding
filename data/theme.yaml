@@ -1,0 +1,15 @@
+# Optional colour overrides, editable via the CMS ("Site Theme").
+# Leave a value blank to keep the default defined in assets/css/variables.css.
+#
+# Ellie & Christian asked for light sky blue (#87CEFA). Used directly as
+# color_primary_light (hover states, highlights) — buttons/links use a
+# deeper blue from the same family instead, because white button text on
+# #87CEFA itself only has a 1.7:1 contrast ratio (WCAG AA needs 4.5:1),
+# which would be very hard to read. See the chat summary for the full
+# contrast workings.
+color_primary: "#1C6EA4"
+color_primary_light: "#87CEFA"
+color_primary_dark: "#0F4C75"
+color_secondary: ""
+color_accent: ""
+color_background: ""

@@ -1,22 +1,14 @@
 ---
 title: "Accommodation"
-description: "Details about accommodation for TBC — we'll share options and pricing here."
+description: "A few recommended places to stay near Healey Barn."
 type: "accommodation"
 rooms:
-  - type: "Standard Room"
-    icon: "🛏️"
-    description: "Comfortable rooms at or near the venue. Update this description with the actual room details."
-    occupancy: "Up to 2 guests"
+  - type: "Add your recommended hotels here via the CMS"
+    icon: "🏨"
+    description: "Replace this with a short description of the hotel/B&B — distance from the venue, why you'd recommend it, etc."
+    occupancy: ""
     features:
-      - "Private room"
-      - "En-suite bathroom"
-      - "Breakfast included"
-    price_per_night: "TBC"
-    price_note: "Per room, per night"
-extras:
-  - label: "Extra adult"
-    price: "TBC"
-    note: "Breakfast included"
-vat_note: "All prices are subject to local VAT."
-payment_note: "Accommodation is settled at checkout by credit card."
+      - "Add a feature, e.g. distance from venue"
+      - "Add a link or booking note"
+closing_note: "Please contact hotels directly to check availability and book your room."
 ---
