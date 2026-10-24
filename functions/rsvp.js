@@ -7,7 +7,12 @@
  *
  * Sheet layout — one row per guest, tied together by submission_id:
  *   submission_id | submitted_at | guest_name | guest_email | is_primary_guest |
- *   attending | dietary | accommodation | rooms | nights | party_size
+ *   attending | dietary | party_size
+ * ...plus accommodation | rooms | nights, but only for sites whose RSVP page
+ * has onsiteAccommodation: true — those form fields don't exist on sites
+ * without on-site rooms to book (e.g. CP-EP), so this function omits the
+ * columns entirely there rather than writing them blank. Make sure each
+ * site's own Sheet header row matches which columns its submissions send.
  *
  * Environment variables (Pages dashboard → Settings → Environment Variables,
  * set separately for Production vs Preview so test submissions never land in
@@ -53,6 +58,10 @@ export async function onRequestPost(context) {
   if (!name || !email || !attending) return json({ ok: false, error: 'missing_fields' }, 400);
 
   const dietary = (data.get('dietary') || '').trim();
+
+  // The accommodation radio only exists in the form markup when the page's
+  // onsiteAccommodation toggle is on — absent (not just empty) otherwise.
+  const hasAccommodation = data.has('accommodation');
   const accommodation = data.get('accommodation') || '';
   const rooms = data.get('rooms') || '';
   const nights = data.get('nights') || '';
@@ -71,19 +80,11 @@ export async function onRequestPost(context) {
   const submittedAt = new Date().toISOString();
   const partySize = attending === 'yes' ? guests.length : 1;
 
-  const rows = guests.map(g => [
-    submissionId,
-    submittedAt,
-    g.name,
-    g.email,
-    g.isPrimary ? 'yes' : 'no',
-    attending,
-    g.dietary,
-    accommodation,
-    rooms,
-    nights,
-    partySize,
-  ]);
+  const rows = guests.map(g => {
+    const row = [submissionId, submittedAt, g.name, g.email, g.isPrimary ? 'yes' : 'no', attending, g.dietary, partySize];
+    if (hasAccommodation) row.push(accommodation, rooms, nights);
+    return row;
+  });
 
   try {
     const accessToken = await getGoogleAccessToken(env.GOOGLE_SERVICE_ACCOUNT_EMAIL, env.GOOGLE_PRIVATE_KEY);
