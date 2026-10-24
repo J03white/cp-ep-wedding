@@ -1,8 +1,1 @@
 baseURL = 'https://cp-ep-wedding.joe1997white.workers.dev/'
-
-[params]
-  # Real RSVP form — only used in the production build (Cloudflare Pages
-  # runs plain `hugo`, which defaults to this environment). Local `hugo
-  # server` stays on the placeholder in the root hugo.toml so test
-  # submissions never hit the couple's real inbox/quota.
-  formspreeEndpoint = "https://formspree.io/f/mbgglvgb"
