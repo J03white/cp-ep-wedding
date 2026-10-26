@@ -5,6 +5,9 @@ main = "src/worker.js"
 [assets]
 directory = "./public"
 binding = "ASSETS"
+run_worker_first = true
 
 [vars]
 CF_TEAM_DOMAIN = "joe1997white.cloudflareaccess.com"
+GOOGLE_SERVICE_ACCOUNT_EMAIL = "rsvp-writer@wedding-512615.iam.gserviceaccount.com"
+GOOGLE_SHEET_ID = "1SrJlgeJKvPqLKtkqlnmQ9vYW67uiidagh_F8NtQf3SM"
