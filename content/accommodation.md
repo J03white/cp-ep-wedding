@@ -4,7 +4,7 @@ description: A few recommended places to stay near Healey Barn.
 type: accommodation
 rooms:
   - type: The Angel of Corbridge
-    icon: TBC
+    icon: 👼
     description: Traditional coaching inn in the centre of picturesque Corbridge,
       around 8 miles from Healey Barn. A great option for guests wanting to stay
       somewhere with plenty of pubs, cafés and shops nearby.
@@ -29,7 +29,7 @@ rooms:
       - Shops & restaurants nearby
       - https://thebeaumonthexham.co.uk/
     price_per_night: £££
-    icon: 👼
+    icon: 🛎️
   - type: Slaley Hall Hotel, Spa & Golf Resort
     description: Large country house hotel and resort set in extensive
       Northumberland countryside. A good choice for guests looking to make a
