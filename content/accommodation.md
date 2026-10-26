@@ -29,7 +29,7 @@ rooms:
       - Shops & restaurants nearby
       - https://thebeaumonthexham.co.uk/
     price_per_night: £££
-    icon: TBC
+    icon: 👼
   - type: Slaley Hall Hotel, Spa & Golf Resort
     description: Large country house hotel and resort set in extensive
       Northumberland countryside. A good choice for guests looking to make a
@@ -44,12 +44,12 @@ rooms:
       - Parking
       - https://www.slaleyhallhotel.com/
     price_per_night: £££
-    icon: TBC
+    icon: ⛳
   - type: Derwent Manor Boutique Hotel
     description: Country hotel overlooking the Derwent Valley, around 8 miles from
       Healey Barn. A good option for guests preferring a traditional
       full-service hotel in a rural setting.
-    icon: TBC
+    icon: 🦌
     occupancy: Up to 6 guests
     features:
       - Restaurant & bar
@@ -60,7 +60,7 @@ rooms:
       - https://www.derwentmanorhotel.com/
     price_per_night: ££
   - type: The Duke Of Wellington Inn
-    icon: TBC
+    icon: 👑
     description: Boutique country pub with rooms in Newton, around 5 miles from
       Healey Barn. A smaller and more characterful alternative to the larger
       hotels.
@@ -74,7 +74,7 @@ rooms:
       - https://www.thedukeofwellingtoninn.co.uk/
     price_per_night: £££
   - type: Anchor Inn
-    icon: TBC
+    icon: ⚓
     description: Traditional country inn at Whittonstall, approximately 5 miles from
       Healey Barn, offering a small number of individually furnished rooms.
     occupancy: Up to 2 guests
@@ -86,7 +86,7 @@ rooms:
       - https://www.theanchorinnwhittonstall.co.uk/
     price_per_night: ££
   - type: The Boathouse at Riding Mill
-    icon: TBC
+    icon: ⛵
     description: Contemporary two-bedroom self-catering cottage in Riding Mill, just
       2 miles / around 5 minutes by car from Healey Barn. Ideal for two couples
       or a small family.
