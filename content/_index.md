@@ -1,10 +1,12 @@
 ---
 title: Ellie & Christian
-description: Join us to celebrate our wedding on 4th September 2027 at Healey Barn, Northumberland
+description: Join us to celebrate our wedding on 4th September 2027 at Healey
+  Barn, Northumberland
 heroImage: images/venue/gettyimages-1227903763.webp
-travelTeaserLabel: "Travelling to Northumberland"
-travelTeaserHeading: "Getting Here"
-travelTeaserText: "We've put together a travel guide with directions to Healey Barn, plus a few accommodation recommendations nearby."
+travelTeaserLabel: Travelling to Northumberland
+travelTeaserHeading: Getting Here
+travelTeaserText: We've put together a travel guide with directions to Healey
+  Barn, plus a few accommodation recommendations nearby.
 details:
   - title: The Night Before
     items:
@@ -27,7 +29,7 @@ details:
       - label: Venue
         value: Healey Barn, Northumberland
       - label: Guest Arrival
-        value: 1pm - 1:30
+        value: 13:00 - 13:30
       - label: Dress Code
         value: TBC
       - label: Evening Do
