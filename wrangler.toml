@@ -11,3 +11,4 @@ run_worker_first = true
 CF_TEAM_DOMAIN = "joe1997white.cloudflareaccess.com"
 GOOGLE_SERVICE_ACCOUNT_EMAIL = "rsvp-writer@wedding-512615.iam.gserviceaccount.com"
 GOOGLE_SHEET_ID = "1SrJlgeJKvPqLKtkqlnmQ9vYW67uiidagh_F8NtQf3SM"
+SITE_PASSWORD = "040927-wedding"
