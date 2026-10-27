@@ -9,7 +9,7 @@ title = 'Ellie & Christian'
   # RSVP submissions post to the same "/rsvp" Pages Function in every
   # environment — Cloudflare Pages selects the right Google Sheet via its
   # Production/Preview environment variables, not via Hugo config.
-  turnstileSiteKey    = "PLACEHOLDER_TURNSTILE_KEY"
+  turnstileSiteKey    = "0x4AAAAAADrmQ0byD-yIN6t1"
   maxAdditionalGuests = 8
 
 [[menus.main]]
