@@ -1,6 +1,7 @@
 ---
 title: Accommodation
-description: A few recommended places to stay near Healey Barn.
+description: A few recommended places to stay near Healey Barn. We love
+  Corbridge and would recommend a visit!
 type: accommodation
 rooms:
   - type: The Angel of Corbridge
