@@ -51,6 +51,10 @@ details:
 ---
 If you're here, it's because you are very important to us and we cannot wait to see you on our Wedding Day!
 
+
+
 Please have a look around. We have included lots of useful information about the weekend, accommodation suggestions and sightseeing options for anyone staying a little longer.
+
+
 
 Don't forget to RSVP by **TBC**.
