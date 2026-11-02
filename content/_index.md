@@ -49,8 +49,8 @@ details:
     note: For those still in the area on Sunday, we will be doing a short walk
       starting from Prudhoe (pronounced prud-uh) Castle.
 ---
-If you're here it's because you are really important to us and we cannot wait to see you on our Wedding Day.
+If you're here, it's because you are very important to us and we cannot wait to see you on our Wedding Day!
 
-Please have a look around and make yourself at home. We've included lots of useful information about getting to the venue, accommodation suggestions, and sightseeing options for anyone staying a little longer.
+Please have a look around. We have included lots of useful information about the weekend, accommodation suggestions and sightseeing options for anyone staying a little longer.
 
 Don't forget to RSVP by **TBC**.
